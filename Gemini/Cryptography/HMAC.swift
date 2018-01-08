@@ -11,9 +11,6 @@ import Foundation
 //
 //  Crypto.swift
 //
-//  Created by Pierre BOUDON on 30/06/2016.
-//  Copyright © 2016 Pierre BOUDON. All rights reserved.
-//
 //  Don't forget to add Bridging-Header and this line in it :
 //  #import <CommonCrypto/CommonCrypto.h>
 import Foundation
