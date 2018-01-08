@@ -12,12 +12,49 @@ import SwiftyJSON
 
 class Api {
     
-    let base = "https://api.sandbox.gemini.com/v1/"
+    static let base = "https://api.sandbox.gemini.com"
     
-    let apiKey = "kRJCbsHSDIQnlnXoE0vK"
-    let apiSecret = "2WNUoBuoc5jVxUx3J4pDyYUkeD4s"
+    static let apiKey = "kRJCbsHSDIQnlnXoE0vK"
+    static let apiSecret = "2WNUoBuoc5jVxUx3J4pDyYUkeD4s"
     
-
+    /**
+     * An abstraction layer on top of the Gemini API to allow for simple handeling of API
+     * calls in a more standard way.
+     *
+     * - property method: the HTTP method (post, get, ...) of the request
+     * - property path: The path of the request
+     */
+    public enum Endpoints {
+        case Balances()
+        
+        public var method: HTTPMethod {
+            switch self {
+            case .Balances:
+                return .post
+            }
+        }
+        
+        public var path: String {
+            switch self {
+            case .Balances:
+                    return "/v1/balances"
+            }
+        }
+        
+        public var url: String {
+            return base + self.path
+        }
+        
+        public var headers: HTTPHeaders {
+            switch self {
+            case .Balances():
+                return createHeaders(request: self.path)
+            }
+        }
+        
+    }
+    
+    
     /**
      Create HTTP Headers for a gemini request
      
@@ -26,16 +63,13 @@ class Api {
      
      - returns: the http headers for the request
     */
-    private func createHeaders(request: String, withAdditionalData additionalData: JSON? = nil) -> HTTPHeaders {
+    private static func createHeaders(request: String, withAdditionalData additionalData: JSON? = nil) -> HTTPHeaders {
         
         var payload = additionalData ?? JSON()
         let nonce = Int64(Date().timeIntervalSince1970 * 1000)
         payload["request"] = JSON(request)
         payload["nonce"]  = JSON(String(nonce))
-        
-        print(payload.serialize())
         let payloadb64 = payload.serialize().toBase64()
-        print(payloadb64)
         
         var headers: [String: String] = [:]
         headers["Content-Type"] = "text/plain"
@@ -45,26 +79,37 @@ class Api {
         headers["X-GEMINI-SIGNATURE"] = payloadb64.hmac(algorithm: .SHA384, key: apiSecret)
         headers["Cache-Control"] = "no-cache"
         
-        print(headers)
         return headers
     }
     
-    init() {
-      
-        print(base + "balances")
-        Alamofire.request(base + "balances", method: .post, headers: createHeaders(request: "/v1/balances")).responseJSON { (json) in
-            
-            let response = JSON(json.result.value)
-            print(response)
+    /**
+     Make a request to the gemini API
+     
+     - parameter endpoint: the API endpoint
+     - parameter completionHandler: the function to handle the JSON response from the API
+     */
+    public static func request(endpoint: Api.Endpoints, completionHandler: @escaping (JSON) -> Void) {
+        Alamofire.request(endpoint.url, method: endpoint.method, headers: endpoint.headers).responseJSON { (response) in
+            if (response.result.value != nil) {
+                print("sucuess")
+                completionHandler(JSON(response.result.value!))
+            } else {
+                if (response.result.error != nil) {
+                    print(response.result.error!) // known error
+                } else {
+                    print("Unkown error") // unkown error
+                }
+            }
         }
-        
     }
+    
     
 }
 
 
 extension JSON {
     
+    // serialize the json into a standard JSON string
     func serialize() -> String {
         let s0: String = self.rawString() ?? ""
         let s1: String = s0.replacingOccurrences(of: "\\/", with: "/")

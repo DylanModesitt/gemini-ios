@@ -5,17 +5,14 @@
 //  Created by Dylan Modesitt on 1/7/18.
 //  Copyright © 2018 modesitt. All rights reserved.
 //
-
-import Foundation
-
-//
-//  Crypto.swift
-//
 //  Don't forget to add Bridging-Header and this line in it :
 //  #import <CommonCrypto/CommonCrypto.h>
+//  originally based on: https://gist.github.com/Darkkrye/66242e31f573dc975d46e30b1cd8517b
+
 import Foundation
 
 enum CryptoAlgorithm {
+    
     case MD5, SHA1, SHA224, SHA256, SHA384, SHA512
     
     var HMACAlgorithm: CCHmacAlgorithm {

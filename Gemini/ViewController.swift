@@ -13,7 +13,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var api = Api()
+        Api.request(endpoint: .Balances()) { (response) in
+            print(response)
+        }
     }
 
     override func didReceiveMemoryWarning() {
