@@ -6,9 +6,16 @@ target 'Gemini' do
   use_frameworks!
 
   # Pods for Gemini
+  
+  # API
   pod 'SwiftyJSON'
   pod 'Alamofire', '~> 4.5'
-
+  
+  # UI
+  pod 'SWRevealViewController', '~> 2.3'
+  pod 'BusyNavigationBar'
+  pod 'Charts'
+  
   target 'GeminiTests' do
     inherit! :search_paths
     # Pods for testing

@@ -9,11 +9,16 @@
 /* Begin PBXBuildFile section */
 		0FFA14C4B26638E6270E6948 /* Pods_GeminiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79838A8BE970F66CA0C21392 /* Pods_GeminiTests.framework */; };
 		7459DD128E311C7BB3C9B548 /* Pods_Gemini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0D765FE257E71654581D431 /* Pods_Gemini.framework */; };
+		C166EBA320047F0500E75612 /* PriceSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C166EBA220047F0500E75612 /* PriceSummaryTableViewCell.swift */; };
 		C183FB812003070F009525F8 /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB802003070F009525F8 /* Api.swift */; };
 		C183FB8420030917009525F8 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB8320030917009525F8 /* Extensions.swift */; };
 		C183FB8A200313B4009525F8 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB89200313B4009525F8 /* HMAC.swift */; };
+		C183FB8F2004291F009525F8 /* DashboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB8E2004291F009525F8 /* DashboardPageViewController.swift */; };
+		C183FB91200429AD009525F8 /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB90200429AD009525F8 /* AccountSummaryViewController.swift */; };
+		C183FB9420043C3E009525F8 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB9320043C3E009525F8 /* Menu.swift */; };
+		C183FB97200441A3009525F8 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB96200441A3009525F8 /* Style.swift */; };
+		C183FB99200474F9009525F8 /* CurrencySummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C183FB98200474F9009525F8 /* CurrencySummaryViewController.swift */; };
 		C1ED9360200302B200B5CC05 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED935F200302B200B5CC05 /* AppDelegate.swift */; };
-		C1ED9362200302B200B5CC05 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9361200302B200B5CC05 /* ViewController.swift */; };
 		C1ED9365200302B200B5CC05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C1ED9363200302B200B5CC05 /* Main.storyboard */; };
 		C1ED9368200302B200B5CC05 /* Gemini.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C1ED9366200302B200B5CC05 /* Gemini.xcdatamodeld */; };
 		C1ED936A200302B200B5CC05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C1ED9369200302B200B5CC05 /* Assets.xcassets */; };
@@ -49,13 +54,18 @@
 		A0A07E61F06D003D9E2E1740 /* Pods-Gemini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gemini.release.xcconfig"; path = "Pods/Target Support Files/Pods-Gemini/Pods-Gemini.release.xcconfig"; sourceTree = "<group>"; };
 		B0DA6E3F528A807320A89B7A /* Pods-GeminiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeminiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeminiUITests/Pods-GeminiUITests.release.xcconfig"; sourceTree = "<group>"; };
 		C0D765FE257E71654581D431 /* Pods_Gemini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Gemini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C166EBA220047F0500E75612 /* PriceSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		C183FB802003070F009525F8 /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		C183FB8320030917009525F8 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C183FB89200313B4009525F8 /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
 		C183FB8B200319B1009525F8 /* Gemini-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gemini-Bridging-Header.h"; sourceTree = "<group>"; };
+		C183FB8E2004291F009525F8 /* DashboardPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardPageViewController.swift; sourceTree = "<group>"; };
+		C183FB90200429AD009525F8 /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
+		C183FB9320043C3E009525F8 /* Menu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		C183FB96200441A3009525F8 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		C183FB98200474F9009525F8 /* CurrencySummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencySummaryViewController.swift; sourceTree = "<group>"; };
 		C1ED935C200302B200B5CC05 /* Gemini.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gemini.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1ED935F200302B200B5CC05 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C1ED9361200302B200B5CC05 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C1ED9364200302B200B5CC05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C1ED9367200302B200B5CC05 /* Gemini.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gemini.xcdatamodel; sourceTree = "<group>"; };
 		C1ED9369200302B200B5CC05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -143,6 +153,7 @@
 		C183FB8220030908009525F8 /* General */ = {
 			isa = PBXGroup;
 			children = (
+				C183FB9520044195009525F8 /* UI */,
 				C183FB8320030917009525F8 /* Extensions.swift */,
 			);
 			path = General;
@@ -155,6 +166,23 @@
 				C183FB8B200319B1009525F8 /* Gemini-Bridging-Header.h */,
 			);
 			path = Cryptography;
+			sourceTree = "<group>";
+		};
+		C183FB9220043C2B009525F8 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				C183FB9320043C3E009525F8 /* Menu.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		C183FB9520044195009525F8 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				C183FB9220043C2B009525F8 /* Menu */,
+				C183FB96200441A3009525F8 /* Style.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 		C1ED9353200302B200B5CC05 = {
@@ -182,8 +210,11 @@
 		C1ED935E200302B200B5CC05 /* Gemini */ = {
 			isa = PBXGroup;
 			children = (
-				C1ED9361200302B200B5CC05 /* ViewController.swift */,
 				C1ED9363200302B200B5CC05 /* Main.storyboard */,
+				C166EBA220047F0500E75612 /* PriceSummaryTableViewCell.swift */,
+				C183FB98200474F9009525F8 /* CurrencySummaryViewController.swift */,
+				C183FB8E2004291F009525F8 /* DashboardPageViewController.swift */,
+				C183FB90200429AD009525F8 /* AccountSummaryViewController.swift */,
 				C1ED936E200302B200B5CC05 /* Info.plist */,
 				C183FB8820031398009525F8 /* Cryptography */,
 				C183FB8220030908009525F8 /* General */,
@@ -374,11 +405,17 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Gemini/Pods-Gemini-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/BusyNavigationBar/BusyNavigationBar.framework",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/SWRevealViewController/SWRevealViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BusyNavigationBar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SWRevealViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -509,9 +546,14 @@
 			files = (
 				C183FB8420030917009525F8 /* Extensions.swift in Sources */,
 				C1ED9368200302B200B5CC05 /* Gemini.xcdatamodeld in Sources */,
+				C183FB99200474F9009525F8 /* CurrencySummaryViewController.swift in Sources */,
 				C183FB8A200313B4009525F8 /* HMAC.swift in Sources */,
-				C1ED9362200302B200B5CC05 /* ViewController.swift in Sources */,
+				C183FB97200441A3009525F8 /* Style.swift in Sources */,
+				C183FB91200429AD009525F8 /* AccountSummaryViewController.swift in Sources */,
 				C183FB812003070F009525F8 /* Api.swift in Sources */,
+				C183FB9420043C3E009525F8 /* Menu.swift in Sources */,
+				C166EBA320047F0500E75612 /* PriceSummaryTableViewCell.swift in Sources */,
+				C183FB8F2004291F009525F8 /* DashboardPageViewController.swift in Sources */,
 				C1ED9360200302B200B5CC05 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -683,6 +725,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AWTQ86CKW7;
 				INFOPLIST_FILE = Gemini/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanmodesitt.Gemini;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -702,6 +745,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AWTQ86CKW7;
 				INFOPLIST_FILE = Gemini/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.dylanmodesitt.Gemini;
 				PRODUCT_NAME = "$(TARGET_NAME)";

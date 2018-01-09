@@ -26,18 +26,23 @@ class Api {
      */
     public enum Endpoints {
         case Balances()
+        case AuctionHistory(symbol: String, since: Int, limit: Int?, indicitave: Bool?)
         
         public var method: HTTPMethod {
             switch self {
             case .Balances:
                 return .post
+            case .AuctionHistory:
+                return .get
             }
         }
         
         public var path: String {
             switch self {
             case .Balances:
-                    return "/v1/balances"
+                return "/v1/balances"
+            case .AuctionHistory(let symbol, _, _, _):
+                return "/v1/auction/\(symbol)/history"
             }
         }
         
@@ -45,10 +50,21 @@ class Api {
             return base + self.path
         }
         
+        public var parameters: [String : Any] {
+            switch self {
+            case .AuctionHistory(_, let since, let limit, let indicative):
+                return ["since": since, "limit_auction_results": limit ?? 50, "include_indicative": indicative ?? false]
+            default:
+                return [:]
+            }
+        }
+        
         public var headers: HTTPHeaders {
             switch self {
-            case .Balances():
+            case .Balances:
                 return createHeaders(request: self.path)
+            case .AuctionHistory:
+                return [:]
             }
         }
         
@@ -89,7 +105,7 @@ class Api {
      - parameter completionHandler: the function to handle the JSON response from the API
      */
     public static func request(endpoint: Api.Endpoints, completionHandler: @escaping (JSON) -> Void) {
-        Alamofire.request(endpoint.url, method: endpoint.method, headers: endpoint.headers).responseJSON { (response) in
+        Alamofire.request(endpoint.url, method: endpoint.method, parameters: endpoint.parameters, headers: endpoint.headers).responseJSON { (response) in
             if (response.result.value != nil) {
                 print("sucuess")
                 completionHandler(JSON(response.result.value!))
