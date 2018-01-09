@@ -23,6 +23,8 @@ class PriceSummaryTableViewCell: UITableViewCell {
                 return self.day
             case "1W":
                 return self.week
+            case "1M":
+                return self.month
             case "1Y":
                 return self.year
             case "All":
@@ -46,39 +48,42 @@ class PriceSummaryTableViewCell: UITableViewCell {
     @IBOutlet var timeSelectors: [UIButton]!
     
     lazy var selectedTime = TimeSelectors.getSelector(buttonText: timeSelectors[0].titleLabel!.text!)
+    lazy var selectedTimeButton = timeSelectors[0]
     var data: [Double] = []
     
     // MARK: methods
     
     @IBAction func timeSelectorDidChange(_ sender: Any) {
         selectedTime = TimeSelectors.getSelector(buttonText: (sender as! UIButton).titleLabel!.text!)
+        selectedTimeButton = (sender as! UIButton)
         layoutSubviews()
     }
     
     private func getData() {
         
         guard let smbl = symbol else { return }
-        var timestamp = Int(NSDate().timeIntervalSince1970)
+        var timestamp = Int64(NSDate().timeIntervalSince1970)
         
         switch selectedTime {
         case .hour:
-            timestamp -= 60*60
+            timestamp -= Int64(60*60)
         case .day:
-            timestamp -= 60*60*24
+            timestamp -= Int64(60*60*24)
         case .week:
-            timestamp -= 60*60*24*7
+            timestamp -= Int64(60*60*24*7)
         case .month:
-            timestamp -= 60*60*24*7*30
+            timestamp -= Int64(60*60*24*7*4) // good enough ;)
         case .year:
-            timestamp -= 60*60*24*7*30*365
+            timestamp -= Int64(60*60*24*7*4*12) // ^^
         case .all:
             timestamp = 0
         }
         
-        Api.request(endpoint: .AuctionHistory(symbol: smbl, since: timestamp, limit: nil, indicitave: nil)) { (json) in
+        Api.request(endpoint: .TradeHistory(symbol: smbl, since: timestamp, limit: nil, includeBreaks: nil)) { (json) in
+            print(json)
             self.data = []
             json.arrayValue.forEach({ (auction) in
-                if let value = Double(auction["collar_price"].stringValue) {
+                if let value = Double(auction["price"].stringValue) {
                     self.data.append(value)
                 }
             })
@@ -91,6 +96,29 @@ class PriceSummaryTableViewCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         getData()
+        
+        // set seleced value button
+        timeSelectors.forEach { (button) in
+            button.backgroundColor = UIColor.clear
+            button.layer.cornerRadius = 4
+            button.tintColor = UIColor.blue
+        }
+        
+        selectedTimeButton.backgroundColor = UIColor.red
+        selectedTimeButton.layer.cornerRadius = 4
+        selectedTimeButton.tintColor = UIColor.white
+        
+        // set chart data
+        guard data.count > 0 else { return }
+        var entry = [ChartDataEntry]()
+        for i in 0..<data.count {
+            entry.append(ChartDataEntry(x: Double(i), y: data[i]))
+        }
+        let line = LineChartDataSet(values: entry, label: symbol!)
+        line.colors = [UIColor.red]
+        let chardData = LineChartData()
+        chardData.addDataSet(line)
+        lineChart.data = chardData
     }
     
     

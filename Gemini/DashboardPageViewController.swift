@@ -21,8 +21,7 @@ class DashboardPageViewController: UIPageViewControllerWithMenu  {
     }
     
     lazy var orderedViewControllers: [UIViewController] = {
-        return [self.loadViewController(withIdentifier: "bitcoinSummaryViewController"),
-                self.loadViewController(withIdentifier: "etheriumSummaryViewController")]
+        return [self.loadViewController(withIdentifier: "bitcoinSummaryViewController")]
     }()
     
     func configurePageControl() {

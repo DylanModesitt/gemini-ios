@@ -77,7 +77,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="227" id="eZo-FE-mv3" customClass="PriceSummaryTableViewCell" customModule="Gemini" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="priceSummary" rowHeight="227" id="eZo-FE-mv3" customClass="PriceSummaryTableViewCell" customModule="Gemini" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="227"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="eZo-FE-mv3" id="7Ob-WF-ceY">
@@ -85,11 +85,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dgb-dF-o6D" customClass="LineChartView" customModule="Charts">
-                                            <rect key="frame" x="16" y="11" width="343" height="173.5"/>
+                                            <rect key="frame" x="16" y="11.5" width="343" height="180"/>
                                             <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="BrC-6R-LBb"/>
+                                            </constraints>
                                         </view>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aRr-KH-i8U">
-                                            <rect key="frame" x="16" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="16" y="199.5" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="30" id="RPr-DS-T4F"/>
                                                 <constraint firstAttribute="height" constant="30" id="U63-LF-m0O"/>
@@ -100,35 +103,35 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OmT-rc-zEc">
-                                            <rect key="frame" x="329" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="329" y="199.5" width="30" height="30"/>
                                             <state key="normal" title="All"/>
                                             <connections>
                                                 <action selector="timeSelectorDidChange:" destination="eZo-FE-mv3" eventType="touchUpInside" id="xum-Me-74t"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aSa-gh-i3c">
-                                            <rect key="frame" x="78" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="78" y="199.5" width="30" height="30"/>
                                             <state key="normal" title="1D"/>
                                             <connections>
                                                 <action selector="timeSelectorDidChange:" destination="eZo-FE-mv3" eventType="touchUpInside" id="ENc-Km-yJo"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aV2-V1-Mj1">
-                                            <rect key="frame" x="204" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="204" y="199.5" width="30" height="30"/>
                                             <state key="normal" title="1M"/>
                                             <connections>
                                                 <action selector="timeSelectorDidChange:" destination="eZo-FE-mv3" eventType="touchUpInside" id="qrH-dk-RDo"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5fF-tF-RQL">
-                                            <rect key="frame" x="266" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="266" y="199.5" width="30" height="30"/>
                                             <state key="normal" title="1Y"/>
                                             <connections>
                                                 <action selector="timeSelectorDidChange:" destination="eZo-FE-mv3" eventType="touchUpInside" id="9ik-jK-SmT"/>
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hme-kN-UbD">
-                                            <rect key="frame" x="141" y="192.5" width="30" height="30"/>
+                                            <rect key="frame" x="141" y="199.5" width="30" height="30"/>
                                             <state key="normal" title="1W"/>
                                             <connections>
                                                 <action selector="timeSelectorDidChange:" destination="eZo-FE-mv3" eventType="touchUpInside" id="fKK-RV-dtF"/>

@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class Api {
     
-    static let base = "https://api.sandbox.gemini.com"
+    static let base = "https://api.gemini.com"
     
     static let apiKey = "kRJCbsHSDIQnlnXoE0vK"
     static let apiSecret = "2WNUoBuoc5jVxUx3J4pDyYUkeD4s"
@@ -26,12 +26,15 @@ class Api {
      */
     public enum Endpoints {
         case Balances()
-        case AuctionHistory(symbol: String, since: Int, limit: Int?, indicitave: Bool?)
+        case TradeHistory(symbol: String, since: Int64, limit: Int?, includeBreaks: Bool?)
+        case AuctionHistory(symbol: String, since: Int64, limit: Int?, indicitave: Bool?)
         
         public var method: HTTPMethod {
             switch self {
             case .Balances:
                 return .post
+            case .TradeHistory:
+                return .get
             case .AuctionHistory:
                 return .get
             }
@@ -41,6 +44,8 @@ class Api {
             switch self {
             case .Balances:
                 return "/v1/balances"
+            case .TradeHistory(let symbol, _, _, _):
+                return "/v1/trades/\(symbol)"
             case .AuctionHistory(let symbol, _, _, _):
                 return "/v1/auction/\(symbol)/history"
             }
@@ -52,8 +57,10 @@ class Api {
         
         public var parameters: [String : Any] {
             switch self {
+            case .TradeHistory(_, let since, let limit, let breaks):
+                return ["include_breaks": String(breaks ?? false), "limit_trades": limit ?? 50, "timestamp": since * 1000]
             case .AuctionHistory(_, let since, let limit, let indicative):
-                return ["since": since, "limit_auction_results": limit ?? 50, "include_indicative": indicative ?? false]
+                return ["include_indicative": String(indicative ?? false), "limit_auction_results": limit ?? 50, "since": since * 1000]
             default:
                 return [:]
             }
@@ -63,7 +70,7 @@ class Api {
             switch self {
             case .Balances:
                 return createHeaders(request: self.path)
-            case .AuctionHistory:
+            default:
                 return [:]
             }
         }
@@ -105,9 +112,10 @@ class Api {
      - parameter completionHandler: the function to handle the JSON response from the API
      */
     public static func request(endpoint: Api.Endpoints, completionHandler: @escaping (JSON) -> Void) {
+        
         Alamofire.request(endpoint.url, method: endpoint.method, parameters: endpoint.parameters, headers: endpoint.headers).responseJSON { (response) in
+            print(response.request?.url)
             if (response.result.value != nil) {
-                print("sucuess")
                 completionHandler(JSON(response.result.value!))
             } else {
                 if (response.result.error != nil) {
