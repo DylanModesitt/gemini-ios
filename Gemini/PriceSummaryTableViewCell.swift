@@ -58,7 +58,6 @@ class PriceSummaryTableViewCell: UITableViewCell {
     private func getData() {
         
         guard let smbl = symbol else { return }
-        
         var timestamp = Int(NSDate().timeIntervalSince1970)
         
         switch selectedTime {
